@@ -3,11 +3,17 @@
 
 :root {
     --main-bg-color: #ffffff;
-    --text-color: #2c3e50;
-    --accent-color: #2e7d32; /* Forest Green */
-    --accent-hover: #1b5e20;
-    --card-bg-color: #f8f9fa;
-    --border-color: #e0e0e0;
+    --section-bg-color: #f8f9fa;
+    --text-color: #1a1a1a;
+    --secondary-text: #666666;
+    --accent-color: #ff3b6b; /* REVU Magenta-Red */
+    --accent-hover: #e63560;
+    --card-bg-color: #ffffff;
+    --border-color: #eeeeee;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 body {
@@ -16,23 +22,25 @@ body {
     color: var(--text-color);
     margin: 0;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 .logo {
     color: var(--accent-color);
     font-weight: 700;
-    font-size: 1.8em;
+    font-size: 1.6em;
+    letter-spacing: -1px;
 }
 
 a {
-    color: var(--accent-color);
+    color: var(--text-color);
     text-decoration: none;
 }
 
 header {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
-    padding: 1rem 5%;
+    padding: 0.8rem 5%;
     position: fixed;
     width: 90%;
     top: 0;
@@ -49,15 +57,16 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     margin: 0;
     padding: 0;
 }
 
 nav ul li a {
     color: var(--text-color);
-    font-weight: 400;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
 }
 
 nav ul li a:hover {
@@ -65,80 +74,99 @@ nav ul li a:hover {
 }
 
 main {
-    padding-top: 80px; /* 헤더 높이만큼 패딩 */
+    padding-top: 70px;
 }
 
 section {
-    padding: 4rem 5%;
+    padding: 5rem 5%;
     text-align: center;
 }
 
+section:nth-child(even) {
+    background-color: var(--section-bg-color);
+}
+
 section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--accent-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
 }
 
 .hero {
-    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop') center/cover no-repeat;
-    min-height: 80vh;
+    background: #fff;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 700;
-    margin: 0 0 1rem 0;
-    color: var(--accent-color);
+    margin: 0 0 1.5rem 0;
+    color: var(--text-color);
+    letter-spacing: -1.5px;
+    line-height: 1.2;
 }
 
 .hero-text p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    color: var(--secondary-text);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
 }
 
 .cta-button {
     background-color: var(--accent-color);
     color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 5px;
+    padding: 1.1rem 3rem;
+    border-radius: 50px; /* Fully rounded like REVU buttons */
     font-weight: 700;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+    font-size: 1.05rem;
+    transition: all 0.2s ease;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(255, 59, 107, 0.25);
 }
 
 .cta-button:hover {
     background-color: var(--accent-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 59, 107, 0.35);
 }
 
 #process .process-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
 }
 
 #process .step {
     background-color: var(--card-bg-color);
-    padding: 2.5rem;
-    border-radius: 10px;
+    padding: 3rem 2rem;
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 #process .step:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: transparent;
 }
 
 #process .step h3 {
     color: var(--accent-color);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+#process .step p {
+    color: var(--secondary-text);
+    font-size: 0.95rem;
 }
 
 #brands .brand-logos {
@@ -146,52 +174,60 @@ section h2 {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 4rem;
 }
 
 #brands .brand-logos img {
-    height: 60px;
+    height: 45px;
     filter: grayscale(100%);
-    opacity: 0.6;
+    opacity: 0.4;
     transition: all 0.3s ease;
 }
 
 #brands .brand-logos img:hover {
     filter: grayscale(0%);
-    opacity: 1;
-    transform: scale(1.1);
+    opacity: 0.8;
 }
 
 #contact form {
-    max-width: 600px;
-    margin: 2rem auto;
+    max-width: 500px;
+    margin: 0 auto;
     display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
 }
 
-#contact input, #contact textarea, #contact button {
+#contact input, #contact textarea {
     width: 100%;
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
-    background-color: #fff;
+    background-color: #fcfcfc;
     color: var(--text-color);
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
 }
 
-#contact input::placeholder, #contact textarea::placeholder {
-    color: #999;
+#contact input:focus, #contact textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
 }
 
 #contact button {
     background-color: var(--accent-color);
     color: white;
     font-weight: 700;
+    padding: 1.1rem;
+    border-radius: var(--radius-md);
     cursor: pointer;
     border: none;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
 }
 
 #contact button:hover {
@@ -200,23 +236,25 @@ section h2 {
 
 footer {
     text-align: center;
-    padding: 2rem 5%;
-    margin-top: 2rem;
-    background-color: var(--card-bg-color);
+    padding: 3rem 5%;
+    background-color: #fff;
     border-top: 1px solid var(--border-color);
+    color: var(--secondary-text);
+    font-size: 0.9rem;
 }
 
-/* 반응형 디자인 */
+/* 반응형 */
 @media (max-width: 768px) {
     nav ul {
-        display: none; /* 모바일에서는 메뉴 숨김 (햄버거 메뉴로 대체 가능) */
+        display: none;
     }
-
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
-
     section h2 {
-        font-size: 2rem;
+        font-size: 1.8rem;
+    }
+    section {
+        padding: 3rem 5%;
     }
 }
